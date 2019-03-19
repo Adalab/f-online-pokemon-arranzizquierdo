@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PagePokemons from './components/PagePokemons';
 
 import './App.scss';
-import {fetchReason} from './service/fetchReason'
+import { fetchReason } from './service/fetchReason'
 
 class App extends Component {
   constructor(props) {
@@ -17,23 +17,24 @@ class App extends Component {
   }
 
   getNameInput(e) {
-    this.setState ({
+    this.setState({
       namePokemon: e.currentTarget.value
     });
   }
 
-  filterName(){
-    const { pokemons, namePokemon } =this.state;
-    
+  filterName() {
+    const { pokemons, namePokemon } = this.state;
+
     const filteredPokemons = pokemons.filter(pokemon => {
       return pokemon.name.includes(namePokemon.toLowerCase());
     });
+    
     return filteredPokemons;
   }
 
   getSaveData() {
     const pokemonsData = localStorage.getItem('pokemons');
-    if ( pokemonsData !== null) {
+    if (pokemonsData !== null) {
       return JSON.parse(pokemonsData);
     } else {
       this.componentDidMount()
@@ -46,14 +47,13 @@ class App extends Component {
 
   componentDidMount() {
     fetchReason().then(data => {
-      
       const pokeURIS = data.results.map(pokemon => {
         return fetch(pokemon.url)
           .then(response => response.json())
       });
       Promise.all(pokeURIS)
         .then(pokemonsInfo => {
-          this.setState ({
+          this.setState({
             pokemons: pokemonsInfo
           })
           this.saveData(pokemonsInfo)
