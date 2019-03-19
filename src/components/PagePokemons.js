@@ -9,12 +9,14 @@ class PagePokemons extends Component {
         this.state = {  }
     }
     render() { 
-        const { pokemons, getNameInput }=this.props;
+        const { pokemons, getNameInput, evolutions }=this.props;
         return ( 
            <div className="main">
            <h1 className="main-title">Search your Pokemons</h1>
            <Filter getNameInput={getNameInput}></Filter>
-           <PokeList pokemons={pokemons}></PokeList>
+           <PokeList 
+            pokemons={pokemons}
+            evolutions={evolutions}></PokeList>
            </div> 
          );
     }

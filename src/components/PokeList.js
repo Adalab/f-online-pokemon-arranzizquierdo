@@ -10,7 +10,8 @@ class PokeList extends Component {
         this.state = {}
     }
     render() {
-        const { pokemons } = this.props;
+        const { pokemons, evolutions } = this.props;
+        console.log('evolutions', evolutions)
         return (
             <ul className="list">
                 {pokemons.map(pokemon => {
@@ -18,7 +19,9 @@ class PokeList extends Component {
                         <li
                             className="item-list" key={pokemon.id}>
                             <Link to={`/${pokemon.id}`} >
-                                <PokeItem pokemon={pokemon}></PokeItem>
+                                <PokeItem 
+                                    pokemon={pokemon}
+                                    evolution={evolutions[pokemon.id-1]}></PokeItem>
                             </Link>
                         </li>
 
