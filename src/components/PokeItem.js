@@ -11,11 +11,11 @@ class PokeItem extends Component {
         return (
             <Fragment>
                 <div className="container-image">
-                <img src={pokemon.sprites.front_default} alt={pokemon.name} /> 
+                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                 </div>
-                
+                <small>ID/ {pokemon.id}</small>
                 <h2 className="title-item">{pokemon.name}</h2>
-                <p>ID: {pokemon.id}</p>
+                
                 <ul className="list-types">
                     {pokemon.types.map((item, id) => {
                         return (
