@@ -9,7 +9,7 @@ class PokeItem extends Component {
         const { pokemon }=this.props
         return (
             <div className="item">
-                <img src={pokemon.sprites.back_default} alt={pokemon.name} />
+                <img src='' alt={pokemon.name} />
                 <h2>{pokemon.name}</h2>
                 <h3>ID: {pokemon.id}</h3>
                 <ul>
@@ -27,3 +27,5 @@ class PokeItem extends Component {
 }
 
 export default PokeItem;
+
+{/* <img src={pokemon.sprites.back_default} alt={pokemon.name} /> */}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PokeItem from './PokeItem';
+import './PokeList.scss';
 
 class PokeList extends Component {
     constructor(props) {
