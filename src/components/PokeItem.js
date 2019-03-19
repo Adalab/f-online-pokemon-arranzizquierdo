@@ -11,7 +11,7 @@ class PokeItem extends Component {
         return (
             <Fragment>
                 <div className="container-image">
-                   <img src='' alt={pokemon.name} /> 
+                <img src={pokemon.sprites.front_default} alt={pokemon.name} /> 
                 </div>
                 
                 <h2 className="title-item">{pokemon.name}</h2>
@@ -32,4 +32,3 @@ class PokeItem extends Component {
 
 export default PokeItem;
 
-{/* <img src={pokemon.sprites.back_default} alt={pokemon.name} /> */}
