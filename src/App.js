@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import PagePokemons from './components/PagePokemons';
+import { Switch, Route } from 'react-router-dom';
 
+import PagePokemons from './components/PagePokemons';
 import './App.scss';
 import { fetchReason } from './service/fetchReason'
+import PokeDetails from './components/PokeDetails';
 
 class App extends Component {
   constructor(props) {
@@ -63,10 +65,30 @@ class App extends Component {
 
   render() {
     const pokemonsFiltered = this.filterName();
-
+    const { pokemons } = this.state;
     return (
       <div className="App">
-        <PagePokemons pokemons={pokemonsFiltered} getNameInput={this.getNameInput}></PagePokemons>
+      <Switch>
+        <Route 
+          exact
+          path='/'
+          render= {() =>
+            <PagePokemons 
+              pokemons={pokemonsFiltered} 
+              getNameInput={this.getNameInput}
+            />
+          }
+        />
+        <Route 
+          path='/:id'
+          render={props =>
+            <PokeDetails 
+              match={props.match}
+              pokemons={pokemons}/>
+          }
+        />
+      </Switch>
+        
       </div>
     );
   }
