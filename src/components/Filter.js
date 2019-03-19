@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Filter.scss';
 
 class Filter extends Component {
     constructor(props) {
@@ -8,7 +9,11 @@ class Filter extends Component {
     render() {
         const { getNameInput }=this.props; 
         return ( 
-            <input type="text" placeholder="name" onChange={getNameInput}/>
+            <input 
+                type="text" 
+                placeholder="name"
+                className="filter" 
+                onChange={getNameInput}/>
          );
     }
 }

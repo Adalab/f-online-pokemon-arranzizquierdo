@@ -1,0 +1,25 @@
+
+.container-image {
+    height: 150px;
+    border-bottom: 1px solid gray;
+}
+
+.title-item {
+    // text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5px; 
+}
+
+.list-types {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+.item-types {
+    background-color: rgb(168, 240, 168);
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+}

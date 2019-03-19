@@ -17,35 +17,32 @@ class App extends Component {
   }
 
   getNameInput(e) {
-    const pokeName = e.currentTarget.value;
     this.setState ({
-      namePokemon: pokeName
+      namePokemon: e.currentTarget.value
     });
   }
 
   filterName(){
-    const filteredPokemons = this.state.pokemons.filter(pokemon => {
-      if(pokemon.name.includes(this.state.namePokemon)){
-        return true;
-      } else {
-        return false;
-      }
+    const { pokemons, namePokemon } =this.state;
+    
+    const filteredPokemons = pokemons.filter(pokemon => {
+      return pokemon.name.includes(namePokemon.toLowerCase());
     });
     return filteredPokemons;
   }
 
-  // getSaveData() {
-  //   const pokemonsData = localStorage.getItem('pokemons');
-  //   if ( pokemonsData !== null) {
-  //     return JSON.parse(pokemonsData);
-  //   } else {
-  //     this.componentDidMount()
-  //   }
-  // }
+  getSaveData() {
+    const pokemonsData = localStorage.getItem('pokemons');
+    if ( pokemonsData !== null) {
+      return JSON.parse(pokemonsData);
+    } else {
+      this.componentDidMount()
+    }
+  }
 
-  // saveData(data) {
-  //   localStorage.setItem('pokemons', JSON.stringify(data));
-  // }
+  saveData(data) {
+    localStorage.setItem('pokemons', JSON.stringify(data));
+  }
 
   componentDidMount() {
     fetchReason().then(data => {
@@ -59,18 +56,17 @@ class App extends Component {
           this.setState ({
             pokemons: pokemonsInfo
           })
-          // this.saveData(pokemonsInfo)
+          this.saveData(pokemonsInfo)
         })
     })
   }
 
   render() {
-    const { pokemonsFiltered } = this.filterName();
-    console.log(pokemonsFiltered);
-    const { pokemons }=this.state;
+    const pokemonsFiltered = this.filterName();
+
     return (
       <div className="App">
-        <PagePokemons pokemons={pokemons} getNameInput={this.getNameInput}></PagePokemons>
+        <PagePokemons pokemons={pokemonsFiltered} getNameInput={this.getNameInput}></PagePokemons>
       </div>
     );
   }

@@ -12,7 +12,7 @@ class PagePokemons extends Component {
         const { pokemons, getNameInput }=this.props;
         return ( 
            <div className="main">
-           <h1>Search your Pokemons</h1>
+           <h1 className="main-title">Search your Pokemons</h1>
            <Filter getNameInput={getNameInput}></Filter>
            <PokeList pokemons={pokemons}></PokeList>
            </div> 

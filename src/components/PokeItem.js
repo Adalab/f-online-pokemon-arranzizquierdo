@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import './PokeItem.scss';
 
 class PokeItem extends Component {
     constructor(props) {
@@ -8,20 +9,23 @@ class PokeItem extends Component {
     render() {
         const { pokemon }=this.props
         return (
-            <div className="item">
-                <img src='' alt={pokemon.name} />
-                <h2>{pokemon.name}</h2>
-                <h3>ID: {pokemon.id}</h3>
-                <ul>
+            <Fragment>
+                <div className="container-image">
+                   <img src='' alt={pokemon.name} /> 
+                </div>
+                
+                <h2 className="title-item">{pokemon.name}</h2>
+                <p>ID: {pokemon.id}</p>
+                <ul className="list-types">
                     {pokemon.types.map((item, id) => {
                         return (
-                            <li key={id}>{item.type.name}</li>
+                            <li 
+                                key={id}
+                                className="item-types">{item.type.name}</li>
                         )
                     })}
                 </ul>
-
-
-            </div>
+            </Fragment>
         );
     }
 }
