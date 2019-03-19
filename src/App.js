@@ -53,6 +53,7 @@ class App extends Component {
         return fetch(pokemon.url)
           .then(response => response.json())
       });
+      console.log(pokeURIS)
       Promise.all(pokeURIS)
         .then(pokemonsInfo => {
           this.setState({
